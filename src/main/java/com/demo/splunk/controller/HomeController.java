@@ -7,14 +7,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Home controller
+ *
+ * @author Ram Niwash
  */
 @Slf4j
 @RestController
 public class HomeController {
 
     @GetMapping(value = "/{message}")
-    public String home(@PathVariable String message){
-        log.info(message);
+    public String home(@PathVariable String message) {
+        log.info("INFO ! = {}", message);
+        log.error("ERROR :) = {}", message);
+        log.warn("WARNING /\\ = {}", message);
+        log.debug("DEBUG ... = {}", message);
+        RuntimeException exception = new RuntimeException(message);
+        log.error("Exception :)", exception);
         return message;
     }
 }
